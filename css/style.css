@@ -1,0 +1,157 @@
+:root {
+  --bg: #0b0a0f;
+  --ink: #efe6d2;
+  --gold: #d4a64a;
+  --ember: #c8342b;
+  --muted: #8a8272;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+  cursor: default;
+  font-family: "Yu Gothic UI", "Meiryo", sans-serif;
+  color: var(--ink);
+}
+
+#viewport {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+  transform-origin: 0 0;
+  overflow: hidden;
+  background: var(--bg);
+  /* 共通の背景演出：中央が少し明るい放射グラデーション＋四隅を暗くするビネット */
+  background-image: radial-gradient(circle at 50% 50%, rgba(20, 20, 30, 0.4) 0%, rgba(0, 0, 0, 0) 50%),
+                    radial-gradient(circle at 50% 50%, transparent 60%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+#slides {
+  position: absolute;
+  inset: 0;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  font-family: "Yu Mincho", "游明朝", serif;
+  font-size: 80px;
+  color: var(--gold);
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+}
+
+.body {
+  font-family: "Yu Gothic UI", "Meiryo", sans-serif;
+  font-size: 44px;
+  color: var(--ink);
+  line-height: 1.5;
+  margin: 0;
+}
+
+#subtitle {
+  position: absolute;
+  bottom: 90px;
+  left: 110px;
+  right: 110px;
+  margin: 0 auto;
+  width: fit-content;
+  max-width: 1700px;
+  font-size: 36px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 30px;
+  border-radius: 8px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  white-space: pre-wrap;
+}
+
+#progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: var(--gold);
+  width: 0%;
+  transition: width 0.3s linear;
+}
+
+#counter {
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
+  font-size: 20px;
+  color: var(--muted);
+}
+
+#help {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+#help.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#help h2 {
+  font-family: "Yu Mincho", "游明朝", serif;
+  color: var(--gold);
+  font-size: 60px;
+  margin-bottom: 40px;
+}
+
+#help ul {
+  list-style: none;
+  padding: 0;
+  font-size: 32px;
+  line-height: 1.8;
+}
+
+.toast {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--gold);
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 24px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 90;
+  pointer-events: none;
+}
+
